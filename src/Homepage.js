@@ -34,7 +34,16 @@ class Homepage extends React.Component {
     users: [],
     userImage: [],
     isLoading: true,
-    isLogin: true
+    isLogin: true,
+    currentUser: { loggedIn: false }
+  };
+
+  checkLogIn = () => {
+    if (sessionStorage.getItem("userData")) {
+      this.setState({
+        currentUser: { loggedIn: true }
+      });
+    }
   };
 
   toggleLogin = boolean => {
@@ -83,7 +92,11 @@ class Homepage extends React.Component {
 
     return (
       <div>
-        <NavbarComponent toggleLogin={this.toggleLogin}></NavbarComponent>
+        <NavbarComponent
+          toggleLogin={this.toggleLogin}
+          checkLogIn={this.checkLogIn}
+          currentUser={this.state.currentUser}
+        ></NavbarComponent>
 
         <ul style={{ listStyleType: "none", padding: "0" }}>
           {this.state.users.map((user, index) => (

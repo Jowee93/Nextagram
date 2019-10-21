@@ -33,7 +33,7 @@ class App extends React.Component {
   };
 
   signUpUser = (newUsername, newEmail, newPassword, newConfirmPassword) => {
-    let user = localStorage.getItem("userData"); //"{}" or null or false
+    let user = sessionStorage.getItem("userData"); //"{}" or null or false
 
     if (user) {
       user = JSON.parse(user);
@@ -50,8 +50,8 @@ class App extends React.Component {
       })
       .then(result => {
         let JWT = result.data.auth_token;
-        localStorage.setItem("userToken", JWT);
-        localStorage.setItem("userData", JSON.stringify(result.data.user));
+        sessionStorage.setItem("userToken", JWT);
+        sessionStorage.setItem("userData", JSON.stringify(result.data.user));
         this.setState({
           currentUser: { ...result.data.user, loggedIn: true }
         });

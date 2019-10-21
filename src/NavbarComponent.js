@@ -12,7 +12,8 @@ import {
   DropdownToggle,
   DropdownMenu,
   DropdownItem,
-  Button
+  Button,
+  Modal
 } from "reactstrap";
 import { throwStatement } from "@babel/types";
 
@@ -58,11 +59,11 @@ const NavbarComponent = props => (
               Sign In
             </Link>
           </NavItem>
-          <NavItem className="navbar navbar-light bg-light">
+          {/* <NavItem className="navbar navbar-light bg-light">
             <Link to="/Login" onClick={() => props.toggleLogin(false)}>
               Sign Up
             </Link>
-          </NavItem>
+          </NavItem> */}
           <NavItem className="navbar navbar-light bg-light">
             <Link
               exact
